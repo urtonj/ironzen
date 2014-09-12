@@ -7,6 +7,7 @@ class WorkoutPeriod
     this.drawChart graphData
 
   drawChart: (graphData) ->
+    console.log graphData
     data = new google.visualization.arrayToDataTable(graphData)
 
     options =

@@ -24,9 +24,8 @@ class WorkoutPeriod
 
   def graph_row_for_exercise_sets exercise_sets
     if exercise_sets
-      total_weight = exercise_sets.collect { |set| set.repetitions * set.weight }.sum
-      total_repetitions = exercise_sets.to_a.sum(&:repetitions)
-      total_weight.to_f / total_repetitions.to_f
+      total_weight = exercise_sets.collect { |set| (set.repetitions * set.weight) / 8 }.sum
+      total_weight.to_f / exercise_sets.count
     end
   end
 
@@ -46,6 +45,6 @@ class WorkoutPeriod
   end
 
   def workouts
-    @workouts ||= Workout.joins(workout_sets: :exercise).where('date >= ?', @since_date)
+    @workouts ||= Workout.joins(workout_sets: :exercise).where('date >= ?', @since_date).uniq
   end
 end
