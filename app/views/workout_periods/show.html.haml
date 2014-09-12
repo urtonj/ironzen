@@ -1,0 +1,12 @@
+%head
+  %script{src: 'https://www.google.com/jsapi', type: "text/javascript"}
+
+%body
+  %h1 IronZen
+
+  #chart_div
+
+:javascript
+  $(function() {
+    summary(#{@workout_graph_data});
+  });
