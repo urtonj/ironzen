@@ -7,13 +7,14 @@ class WorkoutPeriod
   end
 
   def graph_data
-    graph_data = [graph_header_row]
+    graph_data = []
 
     workouts.each do |workout|
       graph_data << graph_row_for_workout(workout)
     end
 
-    graph_data
+    graph_data.sort_by! { |row| row[0] }
+    graph_data.insert(0, graph_header_row)
   end
 
   private
