@@ -24,8 +24,8 @@ class WorkoutPeriod
 
   def graph_row_for_exercise_sets exercise_sets
     if exercise_sets
-      total_weight = exercise_sets.collect { |set| (set.repetitions * set.weight) / 8 }.sum
-      total_weight.to_f / exercise_sets.count
+      weights = exercise_sets.collect(&:weight)
+      weights.sum.to_f / weights.count.to_f
     end
   end
 
